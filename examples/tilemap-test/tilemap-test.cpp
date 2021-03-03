@@ -15,6 +15,12 @@ using namespace blit;
   void init() {
     blit::set_screen_mode(ScreenMode::lores);
 
+    /*
+     * NOTE: When using TileMap, the sprite sheet used *MUST* be 128x128 pixels (16x16 sprites)
+     *       and the tilemap itself *MUST* have dimensions that are powers of 2 (64, 128, 256 tiles)
+     *       otherwise it WILL NOT RENDER CORRECTLY!
+     */
+
     screen.sprites = Surface::load(asset_platformer);
     environment = new TileMap((uint8_t*)asset_tilemap, nullptr, Size(64, 64), screen.sprites);
   }
